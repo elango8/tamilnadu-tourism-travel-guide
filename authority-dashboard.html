@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authority Dashboard - Tamil Nadu Tourism</title>
+    <meta name="description" content="District Authority Dashboard for Tamil Nadu Tourism.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <style>
+        .dashboard-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #f1f5f9 100%);
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .dashboard-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+        }
+
+        .dashboard-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .dashboard-brand-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard-brand-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .dashboard-brand h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .dashboard-brand p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dashboard-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .dashboard-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .dashboard-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .dashboard-btn.icon-only {
+            padding: 12px;
+            position: relative;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            border: 2px solid white;
+        }
+
+        .stat-card.red {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        }
+
+        .stat-card.amber {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        }
+
+        .stat-card.blue {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+
+        .stat-card.purple {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+        }
+
+        .stat-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .stat-card-icon svg {
+            width: 26px;
+            height: 26px;
+            color: white;
+        }
+
+        .stat-card.red .stat-card-icon {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .stat-card.amber .stat-card-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .stat-card.blue .stat-card-icon {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .stat-card.purple .stat-card-icon {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .stat-card-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .stat-card-label {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        .stat-card-change {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Quick Actions */
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .actions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .action-card {
+            background: white;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .action-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-card-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .action-card:hover .action-card-icon {
+            transform: scale(1.1);
+        }
+
+        .action-card-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        .action-card-icon.blue {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .action-card-icon.purple {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .action-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .action-card:hover .action-card-title {
+            color: #3b82f6;
+        }
+
+        .action-card-desc {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* Recent Updates */
+        .updates-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 32px;
+        }
+
+        .updates-card h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 24px;
+        }
+
+        .update-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            background: #f8fafc;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            transition: background 0.2s;
+        }
+
+        .update-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .update-item:hover {
+            background: #f1f5f9;
+        }
+
+        .update-item-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .update-item-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .update-item-icon.success {
+            color: #22c55e;
+        }
+
+        .update-item-icon.warning {
+            color: #f59e0b;
+        }
+
+        .update-item-text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .update-item-text p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .update-item-time {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* Info Banner */
+        .info-banner {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 20px;
+            padding: 32px;
+            color: white;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.4);
+        }
+
+        .info-banner-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-banner-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .info-banner h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .info-banner p {
+            font-size: 15px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-page">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <div class="container">
+                <div class="dashboard-brand">
+                    <div class="dashboard-brand-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1>District Authority Dashboard</h1>
+                        <p id="auth-district-display">Chennai District • Tamil Nadu Tourism</p>
+                    </div>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="dashboard-btn icon-only">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <a href="login.html" class="dashboard-btn" onclick="sessionStorage.clear()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" x2="9" y1="12" y2="12"></line>
+                        </svg>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-6">
+            <!-- Welcome Message -->
+            <div style="margin-bottom: 32px;">
+                <h2 style="font-size: 28px; font-weight: 600; color: #1e293b; margin-bottom: 4px;">Welcome back, <span
+                        id="auth-name-display">Authority</span>!</h2>
+                <p style="font-size: 15px; color: #64748b;">Authority ID: <strong
+                        id="auth-id-display">TN-XXX-000</strong></p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card red">
+                    <div class="stat-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                            <path d="M12 9v4"></path>
+                            <path d="M12 17h.01"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">3</div>
+                    <div class="stat-card-label">Active Alerts</div>
+                    <div class="stat-card-change">+1 today</div>
+                </div>
+
+                <div class="stat-card amber">
+                    <div class="stat-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">Medium</div>
+                    <div class="stat-card-label">Avg Crowd Level</div>
+                    <div class="stat-card-change">Stable</div>
+                </div>
+
+                <div class="stat-card blue">
+                    <div class="stat-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">Low</div>
+                    <div class="stat-card-label">Weather Risk</div>
+                    <div class="stat-card-change">All clear</div>
+                </div>
+
+                <div class="stat-card purple">
+                    <div class="stat-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                            <polyline points="16 7 22 7 22 13"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">2</div>
+                    <div class="stat-card-label">AI Warnings</div>
+                    <div class="stat-card-change">Crowd surge predicted</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="actions-grid">
+                <a href="update-status.html" class="action-card">
+                    <div class="action-card-icon blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path>
+                            <path d="m15 5 4 4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="action-card-title">Update Place Status</h3>
+                    <p class="action-card-desc">Modify tourist place conditions and capacity</p>
+                </a>
+
+                <a href="monitor-analytics.html" class="action-card">
+                    <div class="action-card-icon purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" x2="12" y1="20" y2="10"></line>
+                            <line x1="18" x2="18" y1="20" y2="4"></line>
+                            <line x1="6" x2="6" y1="20" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3 class="action-card-title">Monitor & Analytics</h3>
+                    <p class="action-card-desc">View crowd trends and AI predictions</p>
+                </a>
+            </div>
+
+            <!-- Recent Updates -->
+            <div class="updates-card">
+                <h2>Recent Updates</h2>
+
+                <div class="update-item">
+                    <div class="update-item-left">
+                        <svg class="update-item-icon success" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <div class="update-item-text">
+                            <h4>Meenakshi Temple</h4>
+                            <p>Updated</p>
+                        </div>
+                    </div>
+                    <span class="update-item-time">10 min ago</span>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-item-left">
+                        <svg class="update-item-icon warning" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                            <path d="M12 9v4"></path>
+                            <path d="M12 17h.01"></path>
+                        </svg>
+                        <div class="update-item-text">
+                            <h4>Marina Beach</h4>
+                            <p>Alert Issued</p>
+                        </div>
+                    </div>
+                    <span class="update-item-time">25 min ago</span>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-item-left">
+                        <svg class="update-item-icon success" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <div class="update-item-text">
+                            <h4>Botanical Gardens</h4>
+                            <p>Capacity Updated</p>
+                        </div>
+                    </div>
+                    <span class="update-item-time">1 hour ago</span>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-item-left">
+                        <svg class="update-item-icon success" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <div class="update-item-text">
+                            <h4>Fort St. George</h4>
+                            <p>Weather Updated</p>
+                        </div>
+                    </div>
+                    <span class="update-item-time">2 hours ago</span>
+                </div>
+            </div>
+
+            <!-- Info Banner -->
+            <div class="info-banner">
+                <div class="info-banner-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                        <polyline points="16 7 22 7 22 13"></polyline>
+                    </svg>
+                </div>
+                <div>
+                    <h3>AI-Powered Monitoring Active</h3>
+                    <p>The system is continuously analyzing crowd patterns, weather conditions, and tourist behavior to
+                        provide intelligent predictions and early warnings. All data is verified before publication.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        if (sessionStorage.getItem('userRole') !== 'authority') {
+            window.location.href = 'authority-login.html';
+        }
+
+        // Display user info
+        const name = sessionStorage.getItem('authorityName') || 'Authority';
+        const district = sessionStorage.getItem('authorityDistrict') || 'District';
+        const id = sessionStorage.getItem('authorityId') || 'TN-XXX-000';
+
+        document.getElementById('auth-name-display').textContent = name;
+        document.getElementById('auth-district-display').textContent = `${district} District • Tamil Nadu Tourism`;
+        document.getElementById('auth-id-display').textContent = id;
+    </script>
+</body>
+
+</html>

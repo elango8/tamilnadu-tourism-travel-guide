@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Districts - Tamil Nadu Tourism</title>
+    <meta name="description" content="Explore all 38 districts of Tamil Nadu.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <div class="page-header">
+        <div class="container">
+            <div class="page-header-inner">
+                <a href="home.html" class="back-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                </a>
+                <div>
+                    <h1 class="page-title">Explore Districts</h1>
+                    <p class="page-subtitle">38 districts across Tamil Nadu</p>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="input-group mb-4">
+                <svg class="input-icon icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+                <input type="text" class="input" id="district-search" placeholder="Search districts..."
+                    oninput="filterDistricts()">
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="container py-4">
+        <div class="flex items-center gap-3 flex-wrap">
+            <div class="flex items-center gap-2 text-gray-600">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <span>Filters:</span>
+            </div>
+            <button class="filter-pill" data-filter="crowd" onclick="toggleFilter('crowd')">Less Crowded</button>
+            <button class="filter-pill" data-filter="weather" onclick="toggleFilter('weather')">Weather Safe</button>
+            <button class="filter-pill" data-filter="popular" onclick="toggleFilter('popular')">Popular Today</button>
+        </div>
+    </div>
+
+    <!-- Districts Grid -->
+    <div class="container py-4">
+        <div class="grid grid-4" id="districts-grid"></div>
+
+        <div id="no-results" class="hidden text-center py-6">
+            <div style="font-size: 48px; margin-bottom: 16px;">🔍</div>
+            <h3 class="text-xl font-semibold mb-2">No districts found</h3>
+            <p class="text-gray-600">Try adjusting your filters or search query</p>
+        </div>
+    </div>
+
+    <!-- AI FAB -->
+    <button class="ai-fab" onclick="toggleChatPopup()" title="AI Travel Friend">
+        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 8V4H8"></path>
+            <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+            <path d="M2 14h2"></path>
+            <path d="M20 14h2"></path>
+            <path d="M15 13v2"></path>
+            <path d="M9 13v2"></path>
+        </svg>
+    </button>
+
+    <!-- Chat Popup -->
+    <div id="chat-popup-overlay" class="chat-popup-overlay" onclick="closeChatPopupOnOverlay(event)">
+        <div class="chat-popup">
+            <div class="chat-header">
+                <div class="chat-header-inner">
+                    <div class="chat-avatar">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 8V4H8"></path>
+                            <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+                        </svg>
+                    </div>
+                    <div class="chat-title">
+                        <h1>AI Travel Friend</h1>
+                        <p><span class="chat-status-dot"></span> Always here to help</p>
+                    </div>
+                    <button class="chat-close-btn" onclick="toggleChatPopup()">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-prompts" id="chat-prompts">
+                <p class="chat-prompts-title">Suggested:</p>
+                <div class="chat-prompts-grid">
+                    <button class="chat-prompt-btn" onclick="sendSuggestedPrompt('Is Marina Beach safe?')">Marina Beach
+                        safe?</button>
+                    <button class="chat-prompt-btn" onclick="sendSuggestedPrompt('Less crowded places')">Less
+                        crowded</button>
+                    <button class="chat-prompt-btn"
+                        onclick="sendSuggestedPrompt('Best time Meenakshi Temple')">Meenakshi Temple</button>
+                    <button class="chat-prompt-btn" onclick="sendSuggestedPrompt('Ooty weather forecast')">Ooty
+                        weather</button>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <div class="chat-input-wrapper">
+                    <input type="text" class="chat-input" id="chat-input" placeholder="Ask about Tamil Nadu..."
+                        onkeypress="handleChatKeypress(event)">
+                    <button class="chat-send-btn" id="chat-send-btn" onclick="sendChatMessage()">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" x2="11" y1="2" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <p class="chat-footer-text">Powered by AI • Verified data</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/chat.js"></script>
+    <script>
+        // Check authentication
+        if (!sessionStorage.getItem('userRole')) {
+            window.location.href = 'login.html';
+        }
+
+        // Filter state
+        let filters = { crowd: false, weather: false, popular: false };
+
+        function toggleFilter(filter) {
+            filters[filter] = !filters[filter];
+            const pill = document.querySelector(`[data-filter="${filter}"]`);
+            pill.classList.toggle('active', filters[filter]);
+            renderDistricts();
+        }
+
+        function filterDistricts() {
+            renderDistricts();
+        }
+
+        function getCrowdBadgeClass(level) {
+            switch (level) {
+                case 'Low': return 'badge-success';
+                case 'Medium': return 'badge-warning';
+                case 'High': return 'badge-danger';
+                default: return 'badge-info';
+            }
+        }
+
+        function renderDistricts() {
+            const grid = document.getElementById('districts-grid');
+            const noResults = document.getElementById('no-results');
+            const searchQuery = document.getElementById('district-search').value.toLowerCase();
+
+            let filteredDistricts = districts.filter(d => {
+                const matchesSearch = d.name.toLowerCase().includes(searchQuery);
+                const matchesCrowd = !filters.crowd || d.crowdLevel === 'Low';
+                const matchesWeather = !filters.weather || d.weatherSafe;
+                const matchesPopular = !filters.popular || d.popular;
+                return matchesSearch && matchesCrowd && matchesWeather && matchesPopular;
+            });
+
+            if (filteredDistricts.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+
+            grid.innerHTML = filteredDistricts.map(d => `
+        <a href="district-detail.html?name=${encodeURIComponent(d.name)}" class="card district-card" style="text-decoration: none; color: inherit;">
+          <div class="district-card-img">
+            <img src="${d.image}" alt="${d.name}">
+            <div class="district-card-overlay"></div>
+            <div class="district-card-badges">
+              <span class="badge ${getCrowdBadgeClass(d.crowdLevel)}">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                </svg>
+                ${d.crowdLevel}
+              </span>
+              <div class="flex gap-1">
+                ${d.weatherSafe ? `<span class="badge badge-success">
+                  <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                  </svg>
+                  Safe
+                </span>` : ''}
+              </div>
+            </div>
+            <div class="district-card-info">
+              <h3>${d.name}</h3>
+              <p>${d.places} tourist places</p>
+            </div>
+          </div>
+          <div class="district-card-footer">
+            <span class="flex items-center gap-1">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+              Crowd: ${d.crowdLevel}
+            </span>
+            <span class="flex items-center gap-1">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+              </svg>
+              ${d.weatherSafe ? 'Safe' : 'Caution'}
+            </span>
+          </div>
+        </a>
+      `).join('');
+        }
+
+        // Chat Popup
+        let chatPopupOpen = false;
+        function toggleChatPopup() {
+            const overlay = document.getElementById('chat-popup-overlay');
+            chatPopupOpen = !chatPopupOpen;
+            if (chatPopupOpen) {
+                overlay.classList.add('active');
+                initChat();
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeChatPopupOnOverlay(e) {
+            if (e.target.id === 'chat-popup-overlay') toggleChatPopup();
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && chatPopupOpen) toggleChatPopup();
+        });
+
+        // Initial render
+        renderDistricts();
+    </script>
+</body>
+
+</html>

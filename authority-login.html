@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authority Login - Tamil Nadu Tourism</title>
+    <meta name="description" content="District Authority Portal - Tamil Nadu Tourism">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <style>
+        .auth-login-page {
+            min-height: 100vh;
+            display: flex;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-login-page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .auth-login-page::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -20%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .auth-login-container {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            min-height: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+            .auth-login-container {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                padding: 20px;
+            }
+
+            .auth-login-left {
+                display: none;
+            }
+        }
+
+        .auth-login-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            color: white;
+        }
+
+        .auth-login-left h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .auth-login-left p {
+            font-size: 18px;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .auth-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .auth-feature {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .auth-feature:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(8px);
+        }
+
+        .auth-feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .auth-feature-icon.blue {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .auth-feature-icon.purple {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .auth-feature-icon.green {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .auth-feature h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .auth-feature p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        .auth-login-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .auth-form-card {
+            background: white;
+            border-radius: 24px;
+            padding: 48px 56px;
+            width: 100%;
+            max-width: 540px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .auth-form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .auth-form-logo {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.3);
+        }
+
+        .auth-form-logo svg {
+            width: 36px;
+            height: 36px;
+            color: white;
+        }
+
+        .auth-form-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .auth-form-header p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .auth-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .auth-form .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .auth-form .input-wrapper {
+            position: relative;
+        }
+
+        .auth-form .input-wrapper .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            width: 20px;
+            height: 20px;
+        }
+
+        .auth-form .input-wrapper input,
+        .auth-form .input-wrapper select {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            background: #f8fafc;
+        }
+
+        .auth-form .input-wrapper input:focus,
+        .auth-form .input-wrapper select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .auth-form .input-wrapper select {
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .auth-form-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-top: 28px;
+            box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.3);
+        }
+
+        .auth-form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(30, 41, 59, 0.4);
+        }
+
+        .auth-form-submit svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .auth-form-footer {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .auth-form-footer p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .auth-form-footer a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .auth-form-footer a:hover {
+            background: #f1f5f9;
+            border-color: #3b82f6;
+        }
+
+        .auth-notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border: 1px solid #fcd34d;
+            border-radius: 12px;
+            margin-top: 24px;
+        }
+
+        .auth-notice svg {
+            width: 20px;
+            height: 20px;
+            color: #d97706;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .auth-notice p {
+            font-size: 13px;
+            color: #92400e;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .auth-form-card {
+                padding: 32px 24px;
+            }
+
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-login-page">
+        <div class="auth-login-container">
+            <!-- Left Side - Features -->
+            <div class="auth-login-left">
+                <h1>District Authority Portal</h1>
+                <p>Manage tourist destinations, monitor crowd levels, and issue real-time alerts for Tamil Nadu tourism.
+                </p>
+
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Update Status</h3>
+                            <p>Modify place conditions in real-time</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>AI Analytics</h3>
+                            <p>View crowd predictions and trends</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Issue Alerts</h3>
+                            <p>Notify tourists about safety updates</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div class="auth-login-right">
+                <div class="auth-form-card">
+                    <div class="auth-form-header">
+                        <!-- <div class="auth-form-logo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                            </svg>
+                        </div> -->
+                        <h2>Authority Sign In</h2>
+                        <p>Access your district management dashboard</p>
+                    </div>
+
+                    <form class="auth-form" onsubmit="handleAuthorityLogin(event)">
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <div class="input-wrapper">
+                                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <input type="text" id="auth-name" placeholder="Enter your name" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Authority ID</label>
+                                <div class="input-wrapper">
+                                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                                        <line x1="2" x2="22" y1="10" y2="10"></line>
+                                    </svg>
+                                    <input type="text" id="auth-id" placeholder="e.g., TN-CHN-001" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>District</label>
+                            <div class="input-wrapper">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <select id="auth-district" required>
+                                    <option value="">Select your district</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Madurai">Madurai</option>
+                                    <option value="Coimbatore">Coimbatore</option>
+                                    <option value="Tiruchirappalli">Tiruchirappalli</option>
+                                    <option value="Salem">Salem</option>
+                                    <option value="Tirunelveli">Tirunelveli</option>
+                                    <option value="Thanjavur">Thanjavur</option>
+                                    <option value="Dindigul">Dindigul</option>
+                                    <option value="Kanyakumari">Kanyakumari</option>
+                                    <option value="Nilgiris (Ooty)">Nilgiris (Ooty)</option>
+                                    <option value="Kodaikanal">Kodaikanal</option>
+                                    <option value="Rameswaram">Rameswaram</option>
+                                    <option value="Krishnagiri">Krishnagiri</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-wrapper">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                <input type="password" id="auth-password" placeholder="Enter your password" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="auth-form-submit">
+                            <span>Sign In to Dashboard</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </form>
+
+                    <div class="auth-notice">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <p>This portal is for authorized district officials only. Unauthorized access attempts are
+                            monitored.</p>
+                    </div>
+
+                    <div class="auth-form-footer">
+                        <p>Are you a tourist?</p>
+                        <a href="login.html">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                style="width: 18px; height: 18px;">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Tourist Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleAuthorityLogin(e) {
+            e.preventDefault();
+            const name = document.getElementById('auth-name').value;
+            const district = document.getElementById('auth-district').value;
+            const id = document.getElementById('auth-id').value;
+
+            sessionStorage.setItem('userRole', 'authority');
+            sessionStorage.setItem('authorityName', name);
+            sessionStorage.setItem('authorityDistrict', district);
+            sessionStorage.setItem('authorityId', id);
+
+            window.location.href = 'authority-dashboard.html';
+        }
+    </script>
+</body>
+
+</html>

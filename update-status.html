@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Place Status - Authority Dashboard</title>
+    <meta name="description" content="Update tourist place status and conditions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <style>
+        .update-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #f1f5f9 100%);
+            padding-bottom: 80px;
+        }
+
+        .update-header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .update-header .container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .update-header .back-btn {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        .update-header .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .update-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .update-header p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .update-form-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+
+        .form-section-title svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .select-place {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            font-size: 16px;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .select-place:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .status-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .status-btn {
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .status-btn.open.active {
+            border-color: #22c55e;
+            background: #f0fdf4;
+            color: #15803d;
+        }
+
+        .status-btn.limited.active {
+            border-color: #f59e0b;
+            background: #fffbeb;
+            color: #b45309;
+        }
+
+        .status-btn.closed.active {
+            border-color: #ef4444;
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+
+        .status-btn:hover:not(.active) {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+
+        .gradient-section {
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 2px solid;
+        }
+
+        .gradient-section.purple {
+            background: linear-gradient(135deg, #faf5ff 0%, #eff6ff 100%);
+            border-color: #e9d5ff;
+        }
+
+        .gradient-section.blue {
+            background: linear-gradient(135deg, #eff6ff 0%, #ecfeff 100%);
+            border-color: #bfdbfe;
+        }
+
+        .gradient-section.red {
+            background: linear-gradient(135deg, #fef2f2 0%, #fff7ed 100%);
+            border-color: #fecaca;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-grid.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-textarea {
+            resize: none;
+            min-height: 100px;
+        }
+
+        .occupancy-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .occupancy-track {
+            flex: 1;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .occupancy-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .occupancy-fill.low {
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+        }
+
+        .occupancy-fill.medium {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
+
+        .occupancy-fill.high {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
+        .occupancy-percent {
+            font-weight: 600;
+            color: #1e293b;
+            min-width: 50px;
+        }
+
+        .alert-note {
+            font-size: 13px;
+            color: #dc2626;
+            margin-top: 8px;
+        }
+
+        .publish-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5);
+        }
+
+        .publish-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px -10px rgba(59, 130, 246, 0.6);
+        }
+
+        .publish-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            font-size: 18px;
+        }
+
+        .success-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 20px 28px;
+            border-radius: 16px;
+            display: none;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 20px 40px -10px rgba(34, 197, 94, 0.5);
+            z-index: 1000;
+            animation: slideUp 0.4s ease;
+        }
+
+        .success-toast.show {
+            display: flex;
+        }
+
+        .success-toast svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .success-toast .toast-text {
+            font-weight: 600;
+        }
+
+        .success-toast .toast-subtext {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-content {
+            display: none;
+        }
+
+        .form-content.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .update-form-card {
+                padding: 24px;
+                border-radius: 20px;
+            }
+
+            .status-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="update-page">
+        <!-- Header -->
+        <div class="update-header">
+            <div class="container">
+                <a href="authority-dashboard.html" class="back-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="width: 24px; height: 24px;">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                </a>
+                <div>
+                    <h1>Update Tourist Place Status</h1>
+                    <p id="district-display">Chennai District Authority</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Container -->
+        <div class="container py-6">
+            <div class="update-form-card">
+
+                <!-- Select Place -->
+                <div class="form-section">
+                    <label class="form-section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Select Tourist Place
+                    </label>
+                    <select class="select-place" id="place-select" onchange="handlePlaceSelect()">
+                        <option value="">Choose a place...</option>
+                        <option value="Marina Beach">Marina Beach</option>
+                        <option value="Kapaleeshwarar Temple">Kapaleeshwarar Temple</option>
+                        <option value="Fort St. George">Fort St. George</option>
+                        <option value="San Thome Cathedral">San Thome Cathedral</option>
+                        <option value="Government Museum">Government Museum</option>
+                        <option value="Guindy National Park">Guindy National Park</option>
+                    </select>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <p>Select a tourist place to begin updating</p>
+                </div>
+
+                <!-- Form Content (hidden until place selected) -->
+                <div class="form-content" id="form-content">
+
+                    <!-- Place Status -->
+                    <div class="form-section">
+                        <label class="form-section-title">Place Status</label>
+                        <div class="status-buttons">
+                            <button class="status-btn open active" data-status="Open"
+                                onclick="setStatus('Open')">Open</button>
+                            <button class="status-btn limited" data-status="Limited"
+                                onclick="setStatus('Limited')">Limited</button>
+                            <button class="status-btn closed" data-status="Closed"
+                                onclick="setStatus('Closed')">Closed</button>
+                        </div>
+                    </div>
+
+                    <!-- Crowd Management -->
+                    <div class="gradient-section purple">
+                        <h3 class="form-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            Crowd Management
+                        </h3>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Crowd Level</label>
+                                <select class="form-select" id="crowd-level" onchange="updateOccupancy()">
+                                    <option value="Low">Low</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Maximum Capacity</label>
+                                <input type="number" class="form-input" id="max-capacity" value="1000"
+                                    onchange="updateOccupancy()">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Current Occupancy</label>
+                                <input type="number" class="form-input" id="current-occupancy" value="450"
+                                    onchange="updateOccupancy()">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Occupancy Rate</label>
+                                <div class="occupancy-bar">
+                                    <div class="occupancy-track">
+                                        <div class="occupancy-fill low" id="occupancy-fill" style="width: 45%;"></div>
+                                    </div>
+                                    <span class="occupancy-percent" id="occupancy-percent">45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather & Climate -->
+                    <div class="gradient-section blue">
+                        <h3 class="form-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                            </svg>
+                            Weather & Climate Report
+                        </h3>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Weather Condition</label>
+                                <select class="form-select" id="weather-condition">
+                                    <option value="Clear">Clear & Sunny</option>
+                                    <option value="Cloudy">Cloudy</option>
+                                    <option value="Rainy">Rainy</option>
+                                    <option value="Stormy">Stormy</option>
+                                    <option value="Foggy">Foggy/Misty</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Temperature (°C)</label>
+                                <input type="number" class="form-input" id="temperature" value="28">
+                            </div>
+
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label>Damage/Infrastructure Report</label>
+                                <textarea class="form-textarea" id="damage-report"
+                                    placeholder="Report any damage, road conditions, or infrastructure issues..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rituals & Events -->
+                    <div class="form-section">
+                        <label class="form-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                                <line x1="16" x2="16" y1="2" y2="6"></line>
+                                <line x1="8" x2="8" y1="2" y2="6"></line>
+                                <line x1="3" x2="21" y1="10" y2="10"></line>
+                            </svg>
+                            Special Rituals / Events / Restrictions
+                        </label>
+                        <textarea class="form-textarea" id="ritual-info"
+                            placeholder="Describe any ongoing festivals, special rituals, dress codes, or visiting restrictions..."
+                            style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <!-- Emergency Alert -->
+                    <div class="gradient-section red">
+                        <h3 class="form-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z">
+                                </path>
+                                <path d="M12 9v4"></path>
+                                <path d="M12 17h.01"></path>
+                            </svg>
+                            Emergency Alert (Optional)
+                        </h3>
+                        <textarea class="form-textarea" id="emergency-alert"
+                            placeholder="Publish urgent safety alerts or warnings for tourists..."
+                            style="border-color: #fecaca;"></textarea>
+                        <p class="alert-note">This will be displayed prominently to all users as a high-priority alert
+                        </p>
+                    </div>
+
+                    <!-- Publish Button -->
+                    <button class="publish-btn" onclick="publishUpdate()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                            <polyline points="7 3 7 8 15 8"></polyline>
+                        </svg>
+                        Publish Update
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Toast -->
+        <div class="success-toast" id="success-toast">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <div>
+                <div class="toast-text">Update Published Successfully!</div>
+                <div class="toast-subtext">Tourists will see the latest information</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check auth
+        if (sessionStorage.getItem('userRole') !== 'authority') {
+            window.location.href = 'authority-login.html';
+        }
+
+        // Set district display
+        const district = sessionStorage.getItem('authorityDistrict') || 'District';
+        document.getElementById('district-display').textContent = `${district} District Authority`;
+
+        let currentStatus = 'Open';
+
+        function handlePlaceSelect() {
+            const select = document.getElementById('place-select');
+            const emptyState = document.getElementById('empty-state');
+            const formContent = document.getElementById('form-content');
+
+            if (select.value) {
+                emptyState.style.display = 'none';
+                formContent.classList.add('show');
+            } else {
+                emptyState.style.display = 'block';
+                formContent.classList.remove('show');
+            }
+        }
+
+        function setStatus(status) {
+            currentStatus = status;
+            document.querySelectorAll('.status-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.status === status) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function updateOccupancy() {
+            const max = parseInt(document.getElementById('max-capacity').value) || 1;
+            const current = parseInt(document.getElementById('current-occupancy').value) || 0;
+            const percent = Math.min(Math.round((current / max) * 100), 100);
+
+            const fill = document.getElementById('occupancy-fill');
+            const percentText = document.getElementById('occupancy-percent');
+
+            fill.style.width = percent + '%';
+            percentText.textContent = percent + '%';
+
+            // Update color based on percentage
+            fill.className = 'occupancy-fill';
+            if (percent > 80) {
+                fill.classList.add('high');
+            } else if (percent > 50) {
+                fill.classList.add('medium');
+            } else {
+                fill.classList.add('low');
+            }
+        }
+
+        function publishUpdate() {
+            const placeName = document.getElementById('place-select').value;
+            const toast = document.getElementById('success-toast');
+
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Initialize
+        updateOccupancy();
+    </script>
+</body>
+
+</html>
