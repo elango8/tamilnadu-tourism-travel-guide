@@ -80,6 +80,25 @@
     align-items: center;
     gap: var(--space-3);
     margin-bottom: var(--space-4);
+    justify-content: center;
+}
+
+.login-logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .login-logo-img {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-logo-img {
+        height: 40px;
+    }
 }
 
 .login-brand-logo {
@@ -1083,4 +1102,693 @@
 .update-item-time {
     font-size: var(--font-size-sm);
     color: var(--color-gray-500);
+}
+
+/* ================================
+   MOBILE RESPONSIVE PAGE STYLES
+================================ */
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+    .navbar-inner {
+        height: 52px;
+    }
+
+    .navbar-logo {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .navbar-title {
+        font-size: 0.9375rem;
+    }
+
+    .navbar-subtitle {
+        font-size: 0.625rem;
+    }
+
+    .navbar-logo-img {
+        height: 32px;
+    }
+
+    .navbar-brand {
+        gap: var(--space-2);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-inner {
+        height: 46px;
+    }
+
+    .navbar-logo {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .navbar-title {
+        font-size: 0.8125rem;
+    }
+
+    .navbar-subtitle {
+        display: none;
+    }
+
+    .navbar-logo-img {
+        height: 26px;
+    }
+}
+
+/* Mobile District Cards */
+@media (max-width: 768px) {
+    .district-card-img {
+        height: 140px;
+    }
+
+    .district-card-badges {
+        top: var(--space-2);
+        left: var(--space-2);
+        right: var(--space-2);
+    }
+
+    .district-card-info {
+        bottom: var(--space-2);
+        left: var(--space-2);
+    }
+
+    .district-card-info h3 {
+        font-size: 0.9375rem;
+    }
+
+    .district-card-info p {
+        font-size: 0.6875rem;
+    }
+
+    .district-card-footer {
+        padding: var(--space-2);
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .district-card-img {
+        height: 110px;
+    }
+
+    .district-card-info h3 {
+        font-size: 0.8125rem;
+    }
+
+    .district-card-info p {
+        font-size: 0.625rem;
+    }
+
+    .district-card-footer {
+        padding: var(--space-1) var(--space-2);
+        font-size: 0.6875rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .district-card-img {
+        height: 90px;
+    }
+
+    .district-card-info h3 {
+        font-size: 0.75rem;
+    }
+}
+
+/* Mobile Place Cards */
+@media (max-width: 768px) {
+    .place-card {
+        padding: var(--space-3);
+        border-radius: var(--radius-lg);
+    }
+
+    .place-card-header {
+        margin-bottom: var(--space-2);
+    }
+
+    .place-card-title {
+        font-size: 0.9375rem;
+    }
+
+    .place-card-status {
+        font-size: 0.75rem;
+    }
+
+    .place-card-meta {
+        gap: var(--space-3);
+        font-size: 0.75rem;
+        padding-top: var(--space-2);
+        margin-top: var(--space-2);
+    }
+
+    .place-card-link {
+        font-size: 0.75rem;
+        margin-top: var(--space-2);
+    }
+}
+
+@media (max-width: 480px) {
+    .place-card {
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+    }
+
+    .place-card-title {
+        font-size: 0.8125rem;
+    }
+
+    .place-card-status {
+        font-size: 0.6875rem;
+    }
+
+    .place-card-meta {
+        gap: var(--space-2);
+        font-size: 0.6875rem;
+        flex-wrap: wrap;
+    }
+
+    .place-card-link {
+        font-size: 0.6875rem;
+    }
+}
+
+/* Mobile Authority Header */
+@media (max-width: 768px) {
+    .auth-header {
+        padding: var(--space-3);
+    }
+
+    .auth-brand-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .auth-brand-text h1 {
+        font-size: 1rem;
+    }
+
+    .auth-brand-text p {
+        font-size: 0.75rem;
+    }
+
+    .auth-brand {
+        gap: var(--space-2);
+    }
+
+    .auth-btn {
+        padding: var(--space-2);
+        font-size: 0.75rem;
+    }
+
+    .auth-btn span {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-header {
+        padding: var(--space-2);
+    }
+
+    .auth-brand-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .auth-brand-text h1 {
+        font-size: 0.875rem;
+    }
+
+    .auth-brand-text p {
+        font-size: 0.6875rem;
+    }
+
+    .auth-btn {
+        padding: var(--space-1) var(--space-2);
+    }
+
+    .auth-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Mobile Stat Cards */
+@media (max-width: 768px) {
+    .stat-card {
+        padding: var(--space-3);
+        border-radius: var(--radius-lg);
+    }
+
+    .stat-card-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-md);
+        margin-bottom: var(--space-3);
+    }
+
+    .stat-card-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .stat-card-value {
+        font-size: 1.25rem;
+    }
+
+    .stat-card-label {
+        font-size: 0.75rem;
+    }
+
+    .stat-card-change {
+        font-size: 0.625rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-card {
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+    }
+
+    .stat-card-icon {
+        width: 28px;
+        height: 28px;
+        margin-bottom: var(--space-2);
+    }
+
+    .stat-card-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .stat-card-value {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+
+    .stat-card-label {
+        font-size: 0.6875rem;
+    }
+
+    .stat-card-change {
+        font-size: 0.5625rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .stat-card-value {
+        font-size: 0.875rem;
+    }
+
+    .stat-card-label {
+        font-size: 0.625rem;
+    }
+}
+
+/* Mobile Action Cards */
+@media (max-width: 768px) {
+    .action-card {
+        padding: var(--space-4);
+        border-radius: var(--radius-lg);
+    }
+
+    .action-card-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--space-3);
+    }
+
+    .action-card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .action-card-title {
+        font-size: 0.9375rem;
+        margin-bottom: var(--space-1);
+    }
+
+    .action-card-desc {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-card {
+        padding: var(--space-3);
+        border-radius: var(--radius-md);
+    }
+
+    .action-card-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: var(--space-2);
+    }
+
+    .action-card-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .action-card-title {
+        font-size: 0.8125rem;
+    }
+
+    .action-card-desc {
+        font-size: 0.6875rem;
+    }
+}
+
+/* Mobile Alert Items */
+@media (max-width: 768px) {
+    .alert-item {
+        gap: var(--space-3);
+        padding: var(--space-3);
+        border-radius: var(--radius-lg);
+    }
+
+    .alert-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-md);
+    }
+
+    .alert-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .alert-title {
+        font-size: 0.9375rem;
+    }
+
+    .alert-location {
+        font-size: 0.75rem;
+        gap: var(--space-1);
+        margin-bottom: var(--space-2);
+    }
+
+    .alert-message {
+        font-size: 0.8125rem;
+        margin-bottom: var(--space-2);
+    }
+
+    .alert-footer {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .alert-item {
+        gap: var(--space-2);
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+    }
+
+    .alert-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .alert-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .alert-title {
+        font-size: 0.8125rem;
+    }
+
+    .alert-location {
+        font-size: 0.6875rem;
+        margin-bottom: var(--space-1);
+    }
+
+    .alert-message {
+        font-size: 0.75rem;
+        margin-bottom: var(--space-1);
+    }
+
+    .alert-footer {
+        font-size: 0.6875rem;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+}
+
+/* Mobile Update Items */
+@media (max-width: 768px) {
+    .update-item {
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+    }
+
+    .update-item-left {
+        gap: var(--space-2);
+    }
+
+    .update-item-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .update-item-text h4 {
+        font-size: 0.8125rem;
+    }
+
+    .update-item-text p {
+        font-size: 0.75rem;
+    }
+
+    .update-item-time {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .update-item {
+        padding: var(--space-1) var(--space-2);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-1);
+    }
+
+    .update-item-text h4 {
+        font-size: 0.75rem;
+    }
+
+    .update-item-text p {
+        font-size: 0.6875rem;
+    }
+
+    .update-item-time {
+        font-size: 0.6875rem;
+    }
+}
+
+/* Mobile Login Page */
+@media (max-width: 768px) {
+    .login-page {
+        padding: var(--space-3);
+    }
+
+    .login-form-container {
+        padding: var(--space-4);
+        border-radius: var(--radius-xl);
+    }
+
+    .login-header {
+        margin-bottom: var(--space-4);
+    }
+
+    .login-brand {
+        margin-bottom: var(--space-3);
+    }
+
+    .login-brand-logo {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .login-brand-text h1 {
+        font-size: 1rem;
+    }
+
+    .login-brand-text p {
+        font-size: 0.75rem;
+    }
+
+    .login-welcome h2 {
+        font-size: 1.25rem;
+    }
+
+    .login-welcome p {
+        font-size: 0.8125rem;
+    }
+
+    .role-cards {
+        gap: var(--space-2);
+    }
+
+    .role-card {
+        padding: var(--space-3);
+        border-radius: var(--radius-lg);
+    }
+
+    .role-card-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .role-card-label {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-page {
+        padding: var(--space-2);
+    }
+
+    .login-form-container {
+        padding: var(--space-3);
+        border-radius: var(--radius-lg);
+    }
+
+    .login-brand-logo {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .login-brand-text h1 {
+        font-size: 0.9375rem;
+    }
+
+    .login-welcome h2 {
+        font-size: 1.0625rem;
+    }
+
+    .login-welcome p {
+        font-size: 0.75rem;
+    }
+
+    .role-card {
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+    }
+
+    .role-card-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .role-card-label {
+        font-size: 0.6875rem;
+    }
+
+    .form-group label {
+        font-size: 0.75rem;
+    }
+
+    .login-footer {
+        font-size: 0.75rem;
+    }
+}
+
+/* Mobile Filter Pills */
+@media (max-width: 768px) {
+    .filter-pill {
+        padding: var(--space-1) var(--space-3);
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-pill {
+        padding: var(--space-1) var(--space-2);
+        font-size: 0.6875rem;
+    }
+}
+
+/* Mobile Input Styling */
+@media (max-width: 768px) {
+    .input {
+        padding: var(--space-2) var(--space-3);
+        padding-left: var(--space-10);
+        font-size: 0.875rem;
+        border-radius: var(--radius-md);
+    }
+
+    .input-icon {
+        left: var(--space-3);
+    }
+
+    .input-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input {
+        padding: var(--space-2);
+        padding-left: var(--space-8);
+        font-size: 0.8125rem;
+    }
+
+    .input-icon {
+        left: var(--space-2);
+    }
+
+    .input-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Mobile Info Box */
+@media (max-width: 768px) {
+    .info-box {
+        gap: var(--space-2);
+        padding: var(--space-3);
+        border-radius: var(--radius-md);
+    }
+
+    .info-box-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: var(--radius-sm);
+    }
+
+    .info-box-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-box {
+        padding: var(--space-2);
+        gap: var(--space-2);
+    }
+
+    .info-box-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .info-box-icon svg {
+        width: 12px;
+        height: 12px;
+    }
 }

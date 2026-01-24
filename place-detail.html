@@ -304,9 +304,9 @@
       </li>
     `).join('');
 
-        // AI Suggestions
+        // AI Suggestions - make them clickable
         document.getElementById('place-ai-suggestions').innerHTML = data.aiSuggestions.map(s => `
-      <div class="card" style="cursor: pointer;">
+      <a href="place-detail.html?name=${encodeURIComponent(s.name)}&district=${encodeURIComponent(districtName)}" class="card ai-suggestion-card" style="cursor: pointer; text-decoration: none; color: inherit; transition: all 0.3s ease;">
         <div class="card-body">
           <h4 class="font-semibold mb-2">${s.name}</h4>
           <p class="text-sm text-gray-600 mb-3">${s.reason}</p>
@@ -317,7 +317,7 @@
             </svg>
           </div>
         </div>
-      </div>
+      </a>
     `).join('');
 
         // Chat Popup

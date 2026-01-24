@@ -402,12 +402,7 @@
                     </label>
                     <select class="select-place" id="place-select" onchange="handlePlaceSelect()">
                         <option value="">Choose a place...</option>
-                        <option value="Marina Beach">Marina Beach</option>
-                        <option value="Kapaleeshwarar Temple">Kapaleeshwarar Temple</option>
-                        <option value="Fort St. George">Fort St. George</option>
-                        <option value="San Thome Cathedral">San Thome Cathedral</option>
-                        <option value="Government Museum">Government Museum</option>
-                        <option value="Guindy National Park">Guindy National Park</option>
+                        <!-- Places will be dynamically populated based on district -->
                     </select>
                 </div>
 
@@ -576,6 +571,7 @@
         </div>
     </div>
 
+    <script src="js/data.js"></script>
     <script>
         // Check auth
         if (sessionStorage.getItem('userRole') !== 'authority') {
@@ -585,6 +581,39 @@
         // Set district display
         const district = sessionStorage.getItem('authorityDistrict') || 'District';
         document.getElementById('district-display').textContent = `${district} District Authority`;
+
+        // Populate places based on district
+        function populatePlaces() {
+            const placeSelect = document.getElementById('place-select');
+            placeSelect.innerHTML = '<option value="">Choose a place...</option>';
+
+            // Get places for the logged-in authority's district
+            const districtPlaces = districtData[district];
+
+            if (districtPlaces && districtPlaces.places) {
+                districtPlaces.places.forEach(place => {
+                    const option = document.createElement('option');
+                    option.value = place.name;
+                    option.textContent = place.name;
+                    placeSelect.appendChild(option);
+                });
+            } else {
+                // If district data not found, show default places
+                const defaultPlaces = [
+                    'Local Temple',
+                    'Town Square',
+                    'Public Park',
+                    'Heritage Site',
+                    'Tourist Information Center'
+                ];
+                defaultPlaces.forEach(place => {
+                    const option = document.createElement('option');
+                    option.value = place;
+                    option.textContent = place;
+                    placeSelect.appendChild(option);
+                });
+            }
+        }
 
         let currentStatus = 'Open';
 
@@ -646,6 +675,7 @@
         }
 
         // Initialize
+        populatePlaces();
         updateOccupancy();
     </script>
 </body>
