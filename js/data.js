@@ -3,7 +3,7 @@
 const districts = [
   {
     name: "Ariyalur",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://tse1.mm.bing.net/th/id/OIP.jSqccIV2uVeS7MtR0ewqIAHaEK?w=1200&h=675&rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 5,
@@ -11,7 +11,7 @@ const districts = [
   },
   {
     name: "Chengalpattu",
-    image: "https://images.unsplash.com/photo-1590766940554-634a1f5eba04?w=600&q=80",
+    image: "https://tse3.mm.bing.net/th/id/OIP.qNWYyIYKA0I1SofOmsMG1AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 8,
@@ -19,7 +19,7 @@ const districts = [
   },
   {
     name: "Chennai",
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80",
+    image: "https://tse4.mm.bing.net/th/id/OIP.eO1vNaNrZv4Xl1m4Udlz9wHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "High",
     weatherSafe: true,
     places: 28,
@@ -27,7 +27,7 @@ const districts = [
   },
   {
     name: "Coimbatore",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://www.holidify.com/images/bgImages/COIMBATORE.jpg",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 15,
@@ -35,7 +35,7 @@ const districts = [
   },
   {
     name: "Cuddalore",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+    image: "https://th.bing.com/th/id/R.ae0bc68fba1cf94a811266fa5d78fe86?rik=C1aghkXf2cFtYA&pid=ImgRaw&r=0",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 7,
@@ -43,7 +43,7 @@ const districts = [
   },
   {
     name: "Dharmapuri",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+    image: "https://tse1.mm.bing.net/th/id/OIP.z00uGUV73M8skhpasrASwQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 6,
@@ -51,7 +51,7 @@ const districts = [
   },
   {
     name: "Dindigul",
-    image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=600&q=80",
+    image: "https://th.bing.com/th/id/R.6b63ae3436092b3ddaee63890d82ca21?rik=0fZeyPijtyetqA&pid=ImgRaw&r=0",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 8,
@@ -59,7 +59,7 @@ const districts = [
   },
   {
     name: "Erode",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://th.bing.com/th/id/R.3adbce71a86a16704dfd0835dd146ed8?rik=WtjadfQMQ1wIYA&pid=ImgRaw&r=0",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 7,
@@ -67,7 +67,7 @@ const districts = [
   },
   {
     name: "Kallakurichi",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+    image: "https://tse2.mm.bing.net/th/id/OIP.RYIIM47Ro0M3qxhM_mIdowHaEH?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 4,
@@ -75,7 +75,7 @@ const districts = [
   },
   {
     name: "Kanchipuram",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+    image: "https://th.bing.com/th/id/R.706003797122eaaa32f671bf1fe926a8?rik=00EavWDd2UWSHA&pid=ImgRaw&r=0",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 12,
@@ -83,7 +83,7 @@ const districts = [
   },
   {
     name: "Kanyakumari",
-    image: "https://images.unsplash.com/photo-1590766940554-634a1f5eba04?w=600&q=80",
+    image: "https://tse4.mm.bing.net/th/id/OIP.1DD58mM0IpN1KZw9Nm8NVgHaE6?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 8,
@@ -91,7 +91,7 @@ const districts = [
   },
   {
     name: "Karur",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://img.traveltriangle.com/blog/wp-content/uploads/2024/05/Karur.jpg",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 5,
@@ -99,7 +99,7 @@ const districts = [
   },
   {
     name: "Krishnagiri",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+    image: "https://chaloghumane.com/wp-content/uploads/2021/09/Krishnagiri.jpg",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 6,
@@ -107,7 +107,7 @@ const districts = [
   },
   {
     name: "Madurai",
-    image: "https://images.unsplash.com/photo-1621621696288-66d6f7ce7bb1?w=600&q=80",
+    image: "https://www.indiadivine.org/wp-content/uploads/2015/08/madurai-03.jpg",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 18,
@@ -115,7 +115,7 @@ const districts = [
   },
   {
     name: "Mayiladuthurai",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+    image: "https://tse1.mm.bing.net/th/id/OIP.a3HOMpMXRW4MalYSB-OypgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 6,
@@ -123,7 +123,7 @@ const districts = [
   },
   {
     name: "Nagapattinam",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+    image: "https://tse3.mm.bing.net/th/id/OIP.KCHNoFaElY2xffncduE0ggHaEO?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 8,
@@ -131,7 +131,7 @@ const districts = [
   },
   {
     name: "Namakkal",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://i.ytimg.com/vi/1aZhAqkWIvA/maxresdefault.jpg",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 5,
@@ -139,7 +139,7 @@ const districts = [
   },
   {
     name: "Nilgiris",
-    image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=600&q=80",
+    image: "https://th.bing.com/th/id/R.73a4b07cd836cfe9841d2c083025e0c6?rik=NDhUxWvo402Vyg&riu=http%3a%2f%2fwww.allgudthings.com%2fwp-content%2fuploads%2f2019%2f08%2f3-Days-Ooty-Itinerary.jpg&ehk=xMub%2bJuZ%2f0JWcm%2b4pZBsK74lLC4NlJ9dlujC%2bYfvXPM%3d&risl=&pid=ImgRaw&r=0",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 12,
@@ -147,7 +147,7 @@ const districts = [
   },
   {
     name: "Perambalur",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://chaloghumane.com/wp-content/uploads/2021/09/Perambalur.jpg",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 3,
@@ -155,7 +155,7 @@ const districts = [
   },
   {
     name: "Pudukkottai",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+    image: "https://th.bing.com/th/id/R.690f36459f2e2c5a0623dfc0bf37718b?rik=dgyeYAKnhuu9XA&pid=ImgRaw&r=0",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 7,
@@ -163,7 +163,7 @@ const districts = [
   },
   {
     name: "Ramanathapuram",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+    image: "https://tse4.mm.bing.net/th/id/OIP.mXDTl4bBf-QN90R1g5oSiAAAAA?w=450&h=300&rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 6,
@@ -171,7 +171,7 @@ const districts = [
   },
   {
     name: "Ranipet",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://tse2.mm.bing.net/th/id/OIP.TpnBYVYgfeAcTzjnTtPckQHaE8?w=1200&h=800&rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 4,
@@ -179,7 +179,7 @@ const districts = [
   },
   {
     name: "Salem",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+    image: "https://static-blog.treebo.com/wp-content/uploads/2023/11/Salem_01-1-1024x675.jpg",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 10,
@@ -187,7 +187,7 @@ const districts = [
   },
   {
     name: "Sivaganga",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+    image: "https://tse3.mm.bing.net/th/id/OIP.gyuBoXbAywdo9BVC1nIZlwHaEO?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 6,
@@ -195,7 +195,7 @@ const districts = [
   },
   {
     name: "Tenkasi",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+    image: "https://tamildot.com/wp-content/uploads/2023/04/Kutralam_Main_Falls_Thenkasi-District-_Tourist-Place-768x512.jpg",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 7,
@@ -203,7 +203,7 @@ const districts = [
   },
   {
     name: "Thanjavur",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+    image: "https://tse4.mm.bing.net/th/id/OIP.75uVq_mfQBCAz4ENfp-4eAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 14,
@@ -211,7 +211,7 @@ const districts = [
   },
   {
     name: "Theni",
-    image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=600&q=80",
+    image: "https://tse1.mm.bing.net/th/id/OIP.57QifHrhr-L-E-F1LtBOiQHaEL?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 8,
@@ -219,7 +219,7 @@ const districts = [
   },
   {
     name: "Thoothukudi",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+    image: "https://img.traveltriangle.com/blog/wp-content/uploads/2020/05/800px-Sunrise_in_Tuticorin_beach.jpg",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 6,
@@ -227,7 +227,7 @@ const districts = [
   },
   {
     name: "Tiruchirappalli",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+    image: "https://www.tripsavvy.com/thmb/5BiGQvqDjtU7oaASbGHJTqgUgJk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-181080335-5c59138446e0fb000152fba8.jpg",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 12,
@@ -235,7 +235,7 @@ const districts = [
   },
   {
     name: "Tirunelveli",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://th.bing.com/th/id/R.6ec99d9643841931b8527f5d8da0b570?rik=ee%2fiGWmvPQxPEg&pid=ImgRaw&r=0",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 9,
@@ -243,7 +243,7 @@ const districts = [
   },
   {
     name: "Tirupathur",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+    image: "https://tse1.mm.bing.net/th/id/OIP.aAPPfZEmmA7Kj8c-6NiW8gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 5,
@@ -251,7 +251,7 @@ const districts = [
   },
   {
     name: "Tiruppur",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://tourismtn.com/wp-content/uploads/2020/12/Amaravathi-River-1.jpg",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 6,
@@ -259,7 +259,7 @@ const districts = [
   },
   {
     name: "Tiruvallur",
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80",
+    image: "https://res.cloudinary.com/df4hn2wib/images/f_auto,q_auto/v1720602751/image-90_61809c21d/image-90_61809c21d.jpg?_i=AA",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 8,
@@ -267,7 +267,7 @@ const districts = [
   },
   {
     name: "Tiruvannamalai",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+    image: "https://chaloghumane.com/wp-content/uploads/2021/09/Tiruvannamalai-1400x800.jpg",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 10,
@@ -275,7 +275,7 @@ const districts = [
   },
   {
     name: "Tiruvarur",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+    image: "https://chaloghumane.com/wp-content/uploads/2021/09/Tiruvarur.jpg",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 7,
@@ -283,7 +283,7 @@ const districts = [
   },
   {
     name: "Vellore",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://tse1.mm.bing.net/th/id/OIP.bg4BIisZ34ONVvihcEQj-AHaEv?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 9,
@@ -291,7 +291,7 @@ const districts = [
   },
   {
     name: "Viluppuram",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+    image: "https://tse3.mm.bing.net/th/id/OIP.Q_lVqTXIvzQsZVZshGHFuAHaFW?rs=1&pid=ImgDetMain&o=7&rm=3",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 6,
@@ -299,7 +299,7 @@ const districts = [
   },
   {
     name: "Virudhunagar",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
+    image: "https://th.bing.com/th/id/R.40925f5c1dddcfbdc37987b0a3e1297a?rik=IBjGL7BWkfUG4g&riu=http%3a%2f%2f1.bp.blogspot.com%2f-oPvRRWxIY2o%2fVf_xy699ziI%2fAAAAAAAAItM%2ficAdHYfRaho%2fs1600%2f7939135_orig.jpg&ehk=cey48FltU20uQ0n2qew%2bVQiavPsK8Y0k%2fbVd7cicvmE%3d&risl=&pid=ImgRaw&r=0",
     crowdLevel: "Low",
     weatherSafe: true,
     places: 5,
@@ -309,7 +309,7 @@ const districts = [
 
 const districtData = {
   "Chennai": {
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200&q=80",
+    image: "https://www.honeymoonbug.com/blog/wp-content/uploads/2023/01/Chennai.jpg",
     description: "Chennai, the capital of Tamil Nadu, is a vibrant coastal city known for its rich cultural heritage, beaches, and historical temples.",
     bestSeason: "November to February",
     culture: "Classical music and dance hub, Marina Beach, historic Fort St. George",
@@ -333,7 +333,7 @@ const districtData = {
     ]
   },
   "Ooty": {
-    image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=1200&q=80",
+    image: "https://th.bing.com/th/id/R.73b58ecc4d73fb383d19d89312434503?rik=o%2b8QmLVbrdz8Yw&riu=http%3a%2f%2fd27k8xmh3cuzik.cloudfront.net%2fwp-content%2fuploads%2f2017%2f04%2fOoty-Lake-bb2472017-OG1.jpg&ehk=gG2pnpR3L2gMZO0pof2GEvK2iEzuXKsFa62vko0hfNg%3d&risl=&pid=ImgRaw&r=0",
     description: "Ooty, the 'Queen of Hill Stations', offers scenic landscapes, pleasant climate, and colonial charm in the Nilgiri Mountains.",
     bestSeason: "April to June, September to November",
     culture: "British colonial heritage, tea plantations, mountain railways",
@@ -573,7 +573,7 @@ const districtData = {
     ]
   },
   "Dharmapuri": {
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+    image: "https://tse1.mm.bing.net/th/id/OIP.z00uGUV73M8skhpasrASwQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
     description: "Dharmapuri is known for its historical sites and the scenic Hogenakkal Falls.",
     bestSeason: "July to January",
     culture: "Historical significance, Hogenakkal fame, agricultural hub",
@@ -803,7 +803,7 @@ const districtData = {
 
 const placeData = {
   "Marina Beach": {
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+    image: "https://static.toiimg.com/photo/msid-29858721,width-96,height-65.cms",
     description: "Marina Beach is one of the longest urban beaches in the world, stretching over 13 kilometers along the Bay of Bengal coastline.",
     crowdLevel: "High",
     weatherCondition: "Clear & Sunny",
@@ -823,7 +823,7 @@ const placeData = {
     ]
   },
   "Meenakshi Amman Temple": {
-    image: "https://images.unsplash.com/photo-1621621696288-66d6f7ce7bb1?w=1200&q=80",
+    image: "https://3.bp.blogspot.com/-2jMMEZ8AuKA/U_nChl-sqaI/AAAAAAAAD9g/zCNuQA0T6s8/s1600/meenakshi%2Bamman%2Btemple%2Baayiram%2Bkaal%2Bmandapam.jpg",
     description: "The historic Meenakshi Amman Temple is a Hindu temple dedicated to Goddess Meenakshi and Lord Sundareswarar, renowned for its stunning Dravidian architecture.",
     crowdLevel: "High",
     weatherCondition: "Hot & Humid",
@@ -843,7 +843,7 @@ const placeData = {
     ]
   },
   "Botanical Gardens": {
-    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200&q=80",
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/10/a3/0a/46/beautiful-botanical-garden.jpg",
     description: "The Government Botanical Garden in Ooty is a paradise for nature lovers, featuring rare plant species, landscaped gardens, and a fossilized tree trunk.",
     crowdLevel: "Medium",
     weatherCondition: "Pleasant & Cool",
