@@ -27,7 +27,7 @@ const districts = [
   },
   {
     name: "Coimbatore",
-    image: "https://www.holidify.com/images/bgImages/COIMBATORE.jpg",
+    image: "https://assets.traveltriangle.com/blog/wp-content/uploads/2017/10/Cover27.jpg",
     crowdLevel: "Medium",
     weatherSafe: true,
     places: 15,
@@ -357,7 +357,7 @@ const districtData = {
     ]
   },
   "Coimbatore": {
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80",
+    image: "https://www.overstaytonight.com/wp-content/uploads/2021/10/Adiyogi-Shiva-Statue.jpg",
     description: "Coimbatore, the Manchester of South India, is known for its temples, textiles, and as a gateway to the Western Ghats.",
     bestSeason: "October to March",
     culture: "Temple city, textile industry, engineering hub",
@@ -861,7 +861,33 @@ const placeData = {
       { name: "Tea Museum", reason: "Indoor alternative, less walking" },
       { name: "Doddabetta Peak", reason: "Panoramic views, adventure option" }
     ]
+  },
+  "Siruvani Falls": {
+    image: "https://tripxl.com/blog/wp-content/uploads/2024/10/Kovai-Kutralam-Waterfalls-1.jpg",
+    description: "Siruvani Falls is a scenic waterfall near Coimbatore, famous for its crystal-clear and sweet-tasting water, surrounded by dense forest and rich biodiversity.",
+    crowdLevel: "Medium",
+    weatherCondition: "Cool & Cloudy",
+    temperature: "24°C",
+    status: "Open",
+    lastUpdated: "20 minutes ago",
+    bestTime: "Morning (7-11 AM) or post-monsoon season",
+    climate: {
+      current: "Cool atmosphere with mist and light breeze",
+      forecast: "Partly cloudy with chances of light showers"
+    },
+    rituals: "Entry permitted only during daytime. Carry valid ID. Follow forest department rules.",
+    safety: [
+      "Slippery rocks — wear proper footwear",
+      "Do not enter restricted forest zones",
+      "Avoid visiting during heavy rainfall",
+      "Carry drinking water and snacks"
+    ],
+    aiSuggestions: [
+      { name: "Siruvani Dam", reason: "Peaceful spot nearby with scenic views" },
+      { name: "Velliangiri Hills", reason: "Nature and trekking alternative, less crowded" }
+    ]
   }
+
 };
 
 const alerts = [
